@@ -31,14 +31,14 @@ int main(int argc, char** argv){
     }
 
     if(str_case_cmp(argv[1], "-e") == true){
-        if(argc < 6){
+        if(argc < 5){
            fprintf(stderr, "Insufficient number of arguments provided exiting ...\n");
            exit(1);
         }
 
         const char* steg_algo_used = argv[2];
-        char* msg = readFile(argv[3], atoll(argv[4])); 
-        const char* img_path = argv[5];
+        const char* msg = argv[3]; 
+        const char* img_path = argv[4];
 
         printf("Image path: %s\n", img_path);
 
@@ -91,9 +91,6 @@ int main(int argc, char** argv){
             write_png(output, *(er.st_img));
             destroy_e_rdct_struct(&er);  
         }
-
-        free(msg);
-
     }else if(str_case_cmp(argv[1], "-d") == true){
         if(argc < 4){
            fprintf(stderr, "Insufficient number of arguments provided exiting ...\n");
